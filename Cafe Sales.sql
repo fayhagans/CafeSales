@@ -67,7 +67,30 @@ SELECT payment_method
 FROM cafe_sales_clean
 GROUP BY payment_method;
 
+SELECT "location"
+FROM cafe_sales_clean
+GROUP BY "location";
 
+UPDATE cafe_sales_clean 
+SET "location" = NULL
+WHERE "location" IN ('UNKNOWN', 'ERROR');
 
+SELECT "location"
+FROM cafe_sales_clean
+GROUP BY "location";
+
+UPDATE cafe_sales_clean 
+SET transaction_date = NULL
+WHERE transaction_date IN ('UNKNOWN', 'ERROR');
+
+ALTER TABLE cafe_sales_clean
+ALTER COLUMN transaction_date 
+	TYPE date USING transaction_date::date;
+
+SELECT transaction_date
+FROM cafe_sales_clean;
+
+SELECT *
+FROM cafe_sales_clean;
 
 
