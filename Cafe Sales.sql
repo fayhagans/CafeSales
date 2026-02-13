@@ -91,6 +91,12 @@ SELECT transaction_date
 FROM cafe_sales_clean;
 
 SELECT *
-FROM cafe_sales_clean;
+FROM cafe_sales_clean
+WHERE price_per_unit < 0
+	OR quantity <= 0;
+
+SELECT *
+FROM cafe_sales_clean
+WHERE total_spent != quantity * price_per_unit;
 
 
